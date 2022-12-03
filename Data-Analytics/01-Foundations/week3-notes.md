@@ -30,3 +30,9 @@
 - Visualization tools
 
 ### Formula - a set of instructions that performs a specific calculation using the data in a spreadsheet
+
+### Function - A preset command that automatically performs a specific process or task using the data in a spreadsheet
+
+### Query language - A computer programming language that allows you to retrieve and manipulate data from a database
+
+### Data visualization - The graphical representation of information

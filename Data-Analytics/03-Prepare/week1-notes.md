@@ -96,3 +96,5 @@
 - Data **merging** - data with the same organization can be merged together
 - Data **enhancement** - data can be displayed with more detailed fields
 - Data **comparison** - apples-to-apples comparisons of the data can then be made
+
+---

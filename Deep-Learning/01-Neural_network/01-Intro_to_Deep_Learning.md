@@ -4,11 +4,11 @@
 
 A simple neural network is when there is an input of `X`, amount of data,feed to a neuron then output of a prediction of `Y`. A large neural network is when there is more than one neuron stack together, and a deep neural network is when there is multiple layers of those stack neuron connected through activation function to produce or predict `Y`.
 
-![Simple Neural Network](../images/neural_net_simple.png)
+![Simple Neural Network](../images/part1/week1/neural_net_simple.png)
 
 ### **RelU (Rectified Linear Unit)** - activation function for returning all negative activation to zero.
 
-![ReLU Activation](../images/ReLU_activation.png)
+![ReLU Activation](../images/part1/week1/ReLU_activation.png)
 
 ### **Supervised Learning** - When the input data, `X`, and output prediction,`Y`, was given to the feed into the machine learning algorithm or neural network to train it to produce some prediction from `X` in relationship to `Y`.
 
@@ -24,7 +24,7 @@ A simple neural network is when there is an input of `X`, amount of data,feed to
 
 ### Iteration over different ML ideas.
 
-![Iteration over ML ideas](../images/iteration_ml_ideas.png)
+![Iteration over ML ideas](../images/part1/week1/iteration_ml_ideas.png)
 
 - Faster computation can help speed up how long a team takes to iterate to a good idea
 - Being able to try out ideas quickly allows deep learning engineers to iterate more quickly

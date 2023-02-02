@@ -207,10 +207,10 @@ J = J/m, dw = dw/m, db = db/m
 # Forward propagation
 Z = np.dot(w.T, X) + b
 A = sigmoid(Z)
-dz = A - Y
+dZ = A - Y
 # Backward propagation
-dw = 1/m * X * dz.T
-db = 1/m * np.sum(dz)
+dw = 1/m * X * dZ.T
+db = 1/m * np.sum(dZ)
 # Update w and b
 w = w - learning_rate * dw
 b = b - learning_rate * db

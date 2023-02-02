@@ -140,3 +140,78 @@
   ![One step Gradient Descent](../images/part1/week2/for_loop_gradient_descent.png)
 
 ---
+
+## Vectorization
+
+### What is vectorization?
+
+Vectorized is when using vectors calculation to replace for loop calculations. It is a faster way to do calculation. Calculaltion can be done using the Numpy library, with `np.dot` function.
+
+### Neural network programming guideline: _Whenever possible, avoid explicit for-loops._
+
+### Logistic regression derivatives calculation:
+
+```python
+# Psudo code with for loop
+J=0, dw1=0, dw2=0, db=0
+for i in range(len(m)):
+  z[i] = transpose(W) * x[i] + b
+  a[i] = sigmoid(z[i])
+  # Loss function
+  J += -(y[i]*log(y_hat(i)) + (1 - y[i]) * (log(1 - y-hat[i])))
+  # Derivative
+  dz[i] = a[i] * (1 - a[i])
+  # Update derivatives for w and b
+  dw1 += x1[i] * dz[i]
+  dw2 += x2[i] * dz[i]
+  db += dz[i]
+J = J/m, dw1 = dw1/m, dw2 = dw2/m, db = db/m
+```
+
+Turning dw into numpy array:
+
+```python
+J=0, dw=np.zeros((n_x, 1)), db=0
+for i in range(len(m)):
+  z[i] = transpose(W) * x[i] + b
+  a[i] = sigmoid(z[i])
+  # Loss function
+  J += -(y[i]*log(y_hat(i)) + (1 - y[i]) * (log(1 - y-hat[i])))
+  # Derivative
+  dz[i] = a[i] * (1 - a[i])
+  # Update derivative for w and b
+  dw += x[i] * dz[i]
+  db += dz[i]
+J = J/m, dw = dw/m, db = db/m
+```
+
+### Vectorizing Logistic Regression
+
+- X: horizontally stack of $x^m$
+- $z^m = w^TX+b^m$
+- `Z = np.dot(w.T, X) + b`
+- b is a real number, but with numpy, it broadcast it to a `1 x m` maxtrix.
+- Prediction: `A = sigmoid(Z)`
+
+### Vectorizing Logistic Regression's Gradient Output:
+
+- dZ: `1 x m` maxtrix of $dz^m$
+- `dZ = A - Y`
+- $db = \frac{1}{m} \sum^{m}_{i=1} dz^{i}$
+- in code: `db = 1/m * np.sum(dZ)`
+- `dw = 1/m * X * dZ.T`
+
+**Psudo code**
+
+```python
+# Forward propagation
+Z = np.dot(w.T, X) + b
+A = sigmoid(Z)
+dz = A - Y
+# Backward propagation
+dw = 1/m * X * dz.T
+db = 1/m * np.sum(dz)
+# Update w and b
+w = w - learning_rate * dw
+b = b - learning_rate * db
+```

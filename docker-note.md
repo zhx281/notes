@@ -99,5 +99,13 @@ services:
 - using the open remote connection button at bottem left to connect to the runing container
 - select attach to container and the container enviornment
 
+---
 
+# Run docker cmd without sudo (linux)
 
+1. Add docker to group
+  - `sudo groupadd docker`
+2. Add $USER to docker
+  - `sudo gpasswd -a $USER docker`
+  - note: Replace `$user` with the username of desire
+3. Reboot `sudo reboot`

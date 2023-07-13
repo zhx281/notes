@@ -1,4 +1,4 @@
-# Create Dockerfile
+# Create Dockerfile without Docker Compose
 
 By creating a Dockerfile in root of the working directory will allow to fast build the image.
 
@@ -55,7 +55,22 @@ You could also uses the container id by listing all container with `docker ps -a
 
 ---
 
-# Docker Compose
+# Create dev enironment and share
+
+### Dockerfile
+1. Create Dockerfile file in the root project directory
+2. add the codes
+`
+FROM python:3.10-slim
+WORKDIR /code
+COPY ./requirements.txt ./
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+COPY ./src ./src
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
+`
+
+
+### docker-compose.yaml
 
 1. Create a docker-compose.yaml file in the root project directory
 2. add the codes

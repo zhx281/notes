@@ -2,7 +2,7 @@
 
 By creating a Dockerfile in root of the working directory will allow to fast build the image.
 
-`
+```
 FROM python:3.10-slim
 
 # set the working directory
@@ -18,22 +18,22 @@ COPY ./src ./src
 # start the server
 CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
 
-`
+```
 
 # Create Docker Image with command line
 
-`
+```
 docker build -t fastapi-image . 
-`
+```
 
 - fastapi is the name
 - . is the current work directory
 
 # Run Docker Image as Container
 
-`
+```
 docker run --name fastapi-container -p 80:80 -d -v $(pwd):/code fastapi-image
-`
+```
 
 - --name specifi a name
 - -p 80:80 map the port 
@@ -43,10 +43,10 @@ docker run --name fastapi-container -p 80:80 -d -v $(pwd):/code fastapi-image
 
 # Stop and Remove container
 
-`
+```
 docker stop fastapi-container
 docker rm fastapi-contanier
-`
+```
 
 - fastapi-container is just the name given to when create container, 
 - when there is not name given during creation, docker will generate a random name
@@ -60,21 +60,21 @@ You could also uses the container id by listing all container with `docker ps -a
 ### Dockerfile
 1. Create Dockerfile file in the root project directory
 2. add the codes
-`
+```
 FROM python:3.10-slim
 WORKDIR /code
 COPY ./requirements.txt ./
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 COPY ./src ./src
 CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
-`
+```
 
 
 ### docker-compose.yaml
 
 1. Create a docker-compose.yaml file in the root project directory
 2. add the codes
-`
+```
 services:
   app:
     build: .
@@ -83,7 +83,7 @@ services:
       - 80:80
     volumes:
       - .:/code
-`
+```
 3. run `docker-compose up` in the terminal 
 4. close the docker properly with `docker-compose down` after stoping the container
 5. Rebuild with `--build` flag
